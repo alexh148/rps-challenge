@@ -3,6 +3,15 @@
     <title>Rock, Paper, Scissors!</title>
   </head>
   <body>
-    <h1>Welcome, <%= @name %>!</h1>
+    <div align='center'>
+      <h1>Welcome, <%= @player.name %>!</h1>
+      <h2>Choose your move:</h2>
+      <form action='/result' method='post'>
+        <input type='radio' name='rps_choice' id='rock' value='Rock'> Rock<br>
+        <input type='radio' name='rps_choice' id='paper' value='Paper'> Paper<br>
+        <input type='radio' name='rps_choice' id='scissors' value='Scissors'> Scissors<br>
+        <input type='submit' value="Let's play!">
+      </form>
+    </div>
   </body>
 </html>

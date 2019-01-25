@@ -19,4 +19,5 @@ RSpec.configure do |config|
   end
 
   Capybara.app = RPS
+  srand(3)
 end
