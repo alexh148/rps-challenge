@@ -27,7 +27,8 @@ class RPS < Sinatra::Base
     @player.choose(params[:rps_choice])
     $computer = Player.make_computer
     @computer = $computer
-    redirect '/winner'
+    @game = Game.new
+    redirect '/winner' if @game.winner(@player, @computer) == @player
   end
 
   get '/winner' do
