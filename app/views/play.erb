@@ -4,7 +4,7 @@
   </head>
   <body>
     <div align='center'>
-      <h1>Welcome, <%= @player.name %>!</h1>
+      <h1>Welcome, <%= @game.player_1.name %>!</h1>
       <h2>Choose your move:</h2>
       <form action='/result' method='post'>
         <input type='radio' name='rps_choice' id='rock' value='Rock'> Rock<br>

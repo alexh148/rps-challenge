@@ -11,6 +11,10 @@ class Player
   end
 
   def self.make_computer
-    self.new('Computer', ['Rock', 'Paper', 'Scissors'].sample)
+    self.new('Computer')
+  end
+
+  def random_choose
+    @choice = ['Rock', 'Paper', 'Scissors'].sample
   end
 end

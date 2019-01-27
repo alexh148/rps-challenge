@@ -2,6 +2,7 @@ require_relative './../../app/models/player'
 
 describe Player do
   subject { described_class.new('Al') }
+  let(:computer) { described_class.make_computer }
 
   describe '#defaults' do
     it 'has a name' do
@@ -17,12 +18,14 @@ describe Player do
   end
 
   describe '#make_computer' do
-    let(:computer) { described_class.make_computer }
     it 'creates a Player object with the name: Computer' do
       expect(computer.name).to eq 'Computer'
     end
+  end
 
-    it 'creates a Player object with a random RPS choice' do
+  describe '#random_choose' do
+    it 'randomly selects R, P or S, and sets this as the choice' do
+      computer.random_choose
       expect(computer.choice).to eq 'Rock'
     end
   end

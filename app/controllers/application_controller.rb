@@ -14,41 +14,38 @@ class RPS < Sinatra::Base
   end
 
   post '/user_name' do
-    $player = Player.new(params[:name])
+    player = Player.new(params[:name])
+    computer = Player.make_computer
+    $game = Game.new(player, computer)
     redirect '/play'
   end
 
   get '/play' do
-    @player = $player
+    @game = $game
     erb(:play)
   end
 
   post '/result' do
-    @player = $player
-    @player.choose(params[:rps_choice])
-    $computer = Player.make_computer
-    @computer = $computer
-    @game = Game.new(@player, @computer)
-    redirect '/winner' if @game.winner == @player
-    redirect '/loser' if @game.winner == @computer
+    @game = $game
+    @game.player_1.choose(params[:rps_choice])
+    @game.player_2.random_choose
+    redirect '/winner' if @game.winner == @game.player_1
+    redirect '/loser' if @game.winner == @game.player_2
     redirect '/draw' if @game.winner == 'draw'
   end
 
   get '/winner' do
-    @player = $player
-    @computer = $computer
+    @game = $game
     erb(:winner)
   end
 
   get '/loser' do
-    @player = $player
-    @computer = $computer
+    @game = $game
     erb(:loser)
   end
 
   get '/draw' do
-    @player = $player
-    @computer = $computer
+    @game = $game
     erb(:draw)
   end
 
