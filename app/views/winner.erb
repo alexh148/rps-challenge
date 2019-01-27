@@ -1,12 +1,18 @@
 <html>
   <head>
-    <title>You win!</title>
+    <title>RPS Winner is...</title>
   </head>
   <body>
     <div align='center'>
       <h2><%= @game.player_1.name %> chose: <%= @game.player_1.choice %></h2>
       <h2><%= @game.player_2.name %> chose: <%= @game.player_2.choice %></h2>
-      <h1>You win!</h1>
+      <% if @game.winner == @game.player_1 %>
+        <h1>You win!</h1>
+      <% elsif @game.winner == @game.player_2 %>
+        <h1>You lose!</h1>
+      <% else %>
+        <h1>Draw!</h1>
+      <% end %>
     </div>
   </body>
 </html>

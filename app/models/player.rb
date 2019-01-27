@@ -11,7 +11,7 @@ class Player
   end
 
   def self.make_computer
-    self.new('Computer')
+    Player.new('Computer')
   end
 
   def random_choose

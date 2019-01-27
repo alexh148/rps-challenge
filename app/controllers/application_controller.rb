@@ -29,24 +29,12 @@ class RPS < Sinatra::Base
     @game = $game
     @game.player_1.choose(params[:rps_choice])
     @game.player_2.random_choose
-    redirect '/winner' if @game.winner == @game.player_1
-    redirect '/loser' if @game.winner == @game.player_2
-    redirect '/draw' if @game.winner == 'draw'
+    redirect '/winner'
   end
 
   get '/winner' do
     @game = $game
     erb(:winner)
-  end
-
-  get '/loser' do
-    @game = $game
-    erb(:loser)
-  end
-
-  get '/draw' do
-    @game = $game
-    erb(:draw)
   end
 
   run! if app_file == $0
