@@ -9,6 +9,10 @@ class RPS < Sinatra::Base
 
   enable :sessions
 
+  before do
+    @game = Game.instance
+  end
+
   get '/' do
     erb(:index)
   end
@@ -16,24 +20,21 @@ class RPS < Sinatra::Base
   post '/user_name' do
     player = Player.new(params[:name])
     computer = Player.make_computer
-    $game = Game.new(player, computer)
+    @game = Game.create(player, computer)
     redirect '/play'
   end
 
   get '/play' do
-    @game = $game
     erb(:play)
   end
 
   post '/result' do
-    @game = $game
     @game.player_1.choose(params[:rps_choice])
     @game.player_2.random_choose
     redirect '/winner'
   end
 
   get '/winner' do
-    @game = $game
     erb(:winner)
   end
 
