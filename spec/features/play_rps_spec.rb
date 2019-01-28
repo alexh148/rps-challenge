@@ -17,8 +17,7 @@ feature 'user can choose rock, paper, or scissors' do
 
   scenario 'when selecting rock, win' do
     enter_name_and_go
-    choose 'rock'
-    click_button "Let's play!"
+    click_button "Rock"
     expect(page).to have_content('Al chose: Rock')
     expect(page).to have_content('Computer chose: Scissors')
     expect(page).to have_content('You win!')
@@ -26,8 +25,7 @@ feature 'user can choose rock, paper, or scissors' do
 
   scenario 'when selecting scissors, lose' do
     enter_name_and_go
-    choose 'scissors'
-    click_button "Let's play!"
+    click_button "Scissors"
     expect(page).to have_content('Al chose: Scissors')
     expect(page).to have_content('Computer chose: Rock')
     expect(page).to have_content('You lose!')
@@ -35,10 +33,17 @@ feature 'user can choose rock, paper, or scissors' do
 
   scenario 'when selecting paper, draw' do
     enter_name_and_go
-    choose 'paper'
-    click_button "Let's play!"
+    click_button "Paper"
     expect(page).to have_content('Al chose: Paper')
     expect(page).to have_content('Computer chose: Paper')
     expect(page).to have_content('Draw!')
+  end
+end
+
+feature 'user can play again' do
+  scenario 'after finishing a game' do
+    enter_name_and_go
+    click_button "Rock"
+    expect(page).to have_button('Play again')
   end
 end
