@@ -4,15 +4,32 @@
     <link rel="stylesheet" type="text/css" href="resources/styles.css">
   </head>
   <body>
-    <div align='center'>
+    <div class="heading">
       <h1>Welcome, <%= @game.player_1.name %>!</h1>
       <h2>Choose your move:</h2>
-      <form action='/result' method='post'>
-        <input type='radio' name='rps_choice' id='rock' value='Rock'> Rock<br>
-        <input type='radio' name='rps_choice' id='paper' value='Paper'> Paper<br>
-        <input type='radio' name='rps_choice' id='scissors' value='Scissors'> Scissors<br>
-        <input type='submit' value="Let's play!">
-      </form>
+    </div>
+    <div class="weapons">
+      <div class="weapon">
+        <form action="/result" method="post">
+          <button class="button" type="submit" name="rps_choice" value='Rock'>
+            <img src='resources/Rock.png'>
+          </button>
+        </form>
+      </div>
+      <div class="weapon">
+        <form action="/result" method="post">
+          <button class="button" type="submit" name="rps_choice" value='Paper'>
+            <img src='resources/Paper.png'>
+          </button>
+        </form>
+      </div>
+      <div class="weapon">
+        <form action="/result" method="post">
+          <button class="button" type="submit" name="rps_choice" value='Scissors'>
+            <img src='resources/Scissors.png'>
+          </button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
